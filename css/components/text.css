@@ -1,0 +1,69 @@
+/* =========================================================
+   TEXTO
+   - kicker   : nota escrita a mano (lugar, fecha, momento)
+   - title    : títulos de portada
+   - narration: el cuento
+   ========================================================= */
+.slide__text {
+  display: grid;
+  gap: clamp(0.8rem, 2vh, 1.6rem);
+}
+
+/* Nota a mano */
+.kicker {
+  color: var(--mood-accent);
+  font-family: var(--font-hand);
+  font-size: var(--text-hand);
+  font-weight: 700;
+  line-height: 1;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+
+.slide--cover .kicker,
+.slide--duo .kicker {
+  transform-origin: center;
+}
+
+/* Título de portada */
+.title {
+  font-family: var(--font-story);
+  font-size: var(--text-title);
+  font-weight: 560;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.title em {
+  color: var(--mood-accent);
+  font-style: italic;
+  font-weight: 450;
+}
+
+/* Narración */
+.narration {
+  max-width: 26ch;
+  font-size: var(--text-narration);
+  font-weight: 360;
+  font-variation-settings: "opsz" 48, "SOFT" 60;
+  line-height: 1.38;
+  text-wrap: pretty;
+}
+
+.narration em {
+  color: var(--mood-accent);
+  font-style: italic;
+}
+
+.slide--cover .narration,
+.slide--duo .narration {
+  max-width: 36ch;
+  margin-inline: auto;
+}
+
+@media (max-width: 760px), (orientation: portrait) {
+  .narration { margin-inline: auto; }
+  .kicker { transform-origin: center; }
+}

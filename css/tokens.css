@@ -1,0 +1,40 @@
+/* =========================================================
+   TOKENS
+   Tipografía, tinta, espaciado y tiempos.
+   Los colores de fondo por escena viven en moods.css.
+   ========================================================= */
+
+/* Registrar los colores del ambiente permite animarlos
+   suavemente cuando cambia de escena. */
+@property --mood-bg      { syntax: "<color>"; inherits: true; initial-value: #f7ecdc; }
+@property --mood-glow-1  { syntax: "<color>"; inherits: true; initial-value: #f3c9a6; }
+@property --mood-glow-2  { syntax: "<color>"; inherits: true; initial-value: #f6e2c0; }
+@property --mood-accent  { syntax: "<color>"; inherits: true; initial-value: #c4553a; }
+
+:root {
+  /* Tipografía */
+  --font-story: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-hand:  "Caveat", "Segoe Print", cursive;
+
+  /* Tinta */
+  --ink:        #3a2a22;
+  --ink-soft:   #6f5547;
+  --paper:      #fffdf8;
+  --tape:       rgb(250 236 200 / 0.72);
+
+  /* Escala de texto (fluida según el ancho de pantalla) */
+  --text-title:     clamp(3.2rem, 9vw, 9.5rem);
+  --text-narration: clamp(1.4rem, 2.6vw, 3rem);
+  --text-hand:      clamp(1.6rem, 2.6vw, 2.9rem);
+  --text-caption:   clamp(1.3rem, 1.9vw, 2.1rem);
+
+  /* Espaciado */
+  --gutter: clamp(1.25rem, 5vw, 6rem);
+
+  /* Movimiento */
+  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-scene:    900ms;   /* fade entre slides */
+  --dur-mood:     1400ms;  /* cambio de color de fondo */
+  --dur-reveal:   1000ms;  /* entrada de foto y texto */
+  --stagger:      140ms;   /* retraso entre elementos de texto */
+}

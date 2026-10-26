@@ -1,0 +1,13 @@
+/* =========================================================
+   Punto de entrada de estilos.
+   Orden: tokens → base → ambiente → layout → componentes.
+   ========================================================= */
+@import url("tokens.css");
+@import url("moods.css");
+@import url("base.css");
+@import url("backdrop.css");
+@import url("slide.css");
+@import url("components/photo.css");
+@import url("components/text.css");
+@import url("components/start-hint.css");
+@import url("motion.css");

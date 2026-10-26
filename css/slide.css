@@ -1,0 +1,83 @@
+/* =========================================================
+   SLIDE Y COMPOSICIONES
+   Layouts disponibles (campo `layout` en slides.js):
+   - cover : portada centrada, foto arriba y título debajo
+   - duo   : dos fotos lado a lado y título debajo
+   - left  : foto a la izquierda, narración a la derecha
+   - right : narración a la izquierda, foto a la derecha
+   ========================================================= */
+.presentation {
+  position: fixed;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: safe center;
+  padding: var(--gutter);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--dur-scene) ease,
+    visibility 0s linear var(--dur-scene);
+}
+
+.slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--dur-scene) ease,
+    visibility 0s;
+}
+
+.slide__inner {
+  width: min(100%, 1700px);
+  display: grid;
+  align-items: center;
+  gap: clamp(1.5rem, 4.5vw, 6rem);
+}
+
+.slide__photos {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: clamp(1rem, 4vw, 4rem);
+}
+
+/* --- left / right: la foto se lleva la columna más ancha --- */
+.slide--left .slide__inner {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+}
+
+.slide--right .slide__inner {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+}
+
+.slide--right .slide__photos { order: 2; }
+
+/* --- cover / duo --- */
+.slide--cover .slide__inner,
+.slide--duo .slide__inner {
+  justify-items: center;
+  text-align: center;
+  gap: clamp(1.5rem, 4vh, 3.5rem);
+}
+
+/* --- Pantallas angostas: todo en columna --- */
+@media (max-width: 760px), (orientation: portrait) {
+  /* Si el texto no cabe en celulares pequeños, se puede desplazar. */
+  .slide {
+    overflow-y: auto;
+  }
+
+  .slide--left .slide__inner,
+  .slide--right .slide__inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .slide--right .slide__photos { order: 0; }
+}

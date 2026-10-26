@@ -1,0 +1,37 @@
+/* =========================================================
+   AMBIENTES (moods)
+   Cada slide declara un `mood` en js/data/slides.js.
+   El <body> recibe data-mood y el fondo cambia de color
+   suavemente. Para crear un ambiente nuevo, agrega un bloque.
+   ========================================================= */
+[data-mood="cream"] {
+  --mood-bg: #f7ecdc;  --mood-glow-1: #f3c9a6;  --mood-glow-2: #f6e2c0;  --mood-accent: #c4553a;
+}
+
+[data-mood="rain"] {
+  --mood-bg: #e7ecef;  --mood-glow-1: #c4d4df;  --mood-glow-2: #e3e2d6;  --mood-accent: #3f6a87;
+}
+
+[data-mood="festival"] {
+  --mood-bg: #f9e7d4;  --mood-glow-1: #f2b38c;  --mood-glow-2: #f6d68e;  --mood-accent: #c4553a;
+}
+
+[data-mood="blush"] {
+  --mood-bg: #f8e7e3;  --mood-glow-1: #efbcb4;  --mood-glow-2: #f6dcc8;  --mood-accent: #b2475a;
+}
+
+[data-mood="sunset"] {
+  --mood-bg: #f7e4d6;  --mood-glow-1: #eea684;  --mood-glow-2: #e9c6d7;  --mood-accent: #b85532;
+}
+
+[data-mood="sage"] {
+  --mood-bg: #ebeee2;  --mood-glow-1: #c5d3b2;  --mood-glow-2: #efdfc2;  --mood-accent: #5b7748;
+}
+
+[data-mood="dusk"] {
+  --mood-bg: #e9e4ef;  --mood-glow-1: #c8bcdd;  --mood-glow-2: #f1d5ca;  --mood-accent: #6a4f8f;
+}
+
+[data-mood="gold"] {
+  --mood-bg: #f8edd4;  --mood-glow-1: #efcf8a;  --mood-glow-2: #f5d9c4;  --mood-accent: #a4622a;
+}

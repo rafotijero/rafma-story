@@ -1,0 +1,106 @@
+/* =========================================================
+   FOTO (estilo polaroid con cinta)
+   Muestra un marcador mientras no exista la imagen real.
+
+   Tamaño: la foto ocupa el ancho disponible (--photo-max-w)
+   sin superar una altura máxima (--photo-max-h), respetando
+   su proporción (--photo-ratio). Así se ve grande tanto en
+   un televisor 16:9 como en un celular vertical.
+
+   Proporción: los valores de abajo solo aplican al marcador.
+   Cuando la imagen real carga, js/render/photo.js fija
+   --photo-ratio con la proporción de la imagen, así que la
+   polaroid se adapta a la foto y nunca la recorta.
+   ========================================================= */
+.photo {
+  --tilt: 0deg;
+  --photo-ratio: 1.3333;   /* 4:3 horizontal */
+  --photo-max-w: 100%;
+  --photo-max-h: 62dvh;
+
+  position: relative;
+  width: min(var(--photo-max-w), calc(var(--photo-max-h) * var(--photo-ratio)));
+  padding: clamp(0.5rem, 1.1vw, 1.1rem);
+  background: var(--paper);
+  box-shadow:
+    0 1px 2px rgb(60 40 30 / 0.12),
+    0 12px 28px -8px rgb(60 40 30 / 0.28),
+    0 40px 60px -30px rgb(60 40 30 / 0.3);
+  transform: rotate(var(--tilt));
+}
+
+/* Sin pie de foto: borde inferior clásico de polaroid */
+.photo:not(:has(.photo__caption)) {
+  padding-bottom: clamp(1.75rem, 4vw, 4rem);
+}
+
+/* Cinta adhesiva */
+.photo::before {
+  content: "";
+  position: absolute;
+  top: -0.9rem;
+  left: 50%;
+  width: min(30%, 10rem);
+  height: 1.9rem;
+  background: var(--tape);
+  box-shadow: 0 1px 2px rgb(60 40 30 / 0.08);
+  transform: translateX(-50%) rotate(calc(var(--tilt) * -1.5 - 2deg));
+}
+
+.photo__frame {
+  aspect-ratio: var(--photo-ratio);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 14px,
+      color-mix(in srgb, var(--mood-accent) 6%, transparent) 14px 28px
+    ),
+    color-mix(in srgb, var(--mood-bg) 70%, white);
+}
+
+.photo__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* respaldo: nunca recortar */
+}
+
+.photo__label {
+  padding: 1rem;
+  color: var(--ink-soft);
+  font-family: var(--font-story);
+  font-size: clamp(0.95rem, 1.2vw, 1.25rem);
+  font-style: italic;
+  text-align: center;
+}
+
+.photo__caption {
+  padding: 0.5em 0 0.35em;
+  color: var(--ink);
+  font-family: var(--font-hand);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+}
+
+/* =========================================================
+   Tamaños por composición
+   ========================================================= */
+
+/* Pantalla horizontal (televisor, laptop) */
+.slide--cover .photo { --photo-max-h: 42dvh; }
+.slide--duo   .photo { --photo-max-w: 40vw; --photo-max-h: 36dvh; }
+
+/* QR: cuadrado y grande, para escanearlo desde lejos */
+.slide .photo--square { --photo-ratio: 1; --photo-max-h: 46dvh; }
+
+/* Pantalla vertical (celular) */
+@media (max-width: 760px), (orientation: portrait) {
+  .photo                 { --photo-max-h: 40dvh; }
+  .slide--cover .photo   { --photo-max-h: 34dvh; }
+  .slide--duo   .photo   { --photo-max-w: 44vw; --photo-max-h: 26dvh; }
+  .slide .photo--square  { --photo-max-w: 80vw; --photo-max-h: 40dvh; }
+}

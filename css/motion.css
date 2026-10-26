@@ -1,0 +1,42 @@
+/* =========================================================
+   MOVIMIENTO
+   Al activarse una slide: la foto cae suavemente en su
+   lugar y el texto aparece línea por línea.
+   El orden de cada elemento viene en la variable --i.
+   ========================================================= */
+.slide .photo {
+  opacity: 0;
+  transform: translateY(2.5rem) rotate(calc(var(--tilt) - 5deg)) scale(0.96);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform calc(var(--dur-reveal) * 1.2) var(--ease-out);
+  transition-delay: calc(150ms + var(--i, 0) * 180ms);
+}
+
+.slide.is-active .photo {
+  opacity: 1;
+  transform: rotate(var(--tilt));
+}
+
+.slide .reveal {
+  opacity: 0;
+  translate: 0 1rem;
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    translate var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(450ms + var(--i, 0) * var(--stagger));
+}
+
+.slide.is-active .reveal {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide .photo,
+  .slide .reveal {
+    transition-duration: 1ms;
+    transition-delay: 0ms;
+    translate: none;
+  }
+}

@@ -1,0 +1,16 @@
+# Configuración local del editor / vista previa
+.claude/
+.idea/
+.vscode/
+
+# Pruebas de voz (no se usan en la presentación)
+audio/muestras/
+
+# Python
+__pycache__/
+*.pyc
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
