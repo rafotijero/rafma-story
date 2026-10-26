@@ -27,9 +27,9 @@ js/
   render/       construcción de cada escena
   core/         navegación, controles, avance automático
   audio/        música de fondo y narración (Web Audio)
-img/            fotos: slide-N.webp, kahoot-qr.webp
+img/            fotos: slide-N.webp, kahoot-qr.webp, share.jpg (vista previa al compartir)
 audio/          música y narración (audio/narracion/slide-N.mp3)
-tools/          generador de la narración (no lo usa la página)
+tools/          generadores de la narración y de la imagen para compartir (no los usa la página)
 ```
 
 - **Cambiar un texto:** `js/data/slides.js`, y luego regenerar su voz (ver `tools/narration/README.md`).
