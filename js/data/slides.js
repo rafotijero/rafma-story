@@ -194,7 +194,7 @@ export const slides = [
     kicker: "Ahora les toca a ustedes",
     title: "¿Estuvieron <em>atentos?</em>",
     photos: [
-      { label: "(Aquí va el QR de Kahoot)", src: "img/kahoot-qr.webp", tilt: -1, shape: "square" }
+      { label: "(Aquí va imagen 15)", src: "img/slide-15.webp", tilt: -1 }
     ]
   }
 ];
